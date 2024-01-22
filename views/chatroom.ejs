@@ -1,0 +1,99 @@
+<!-- chatroom.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url(f1.png);
+        background-size: cover; 
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #f1f1f1;
+      }
+
+      #header {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 20px;
+      }
+
+      #chat-container {
+        width: 60%;
+        height: 60%;
+        overflow: auto;
+        border: 2px solid #333;
+        border-radius: 8px;
+        padding: 10px;
+        color: white;
+      }
+
+      #message-input {
+        width: 60%;
+        padding: 10px;
+        border: 1px solid #333;
+        border-radius: 4px;
+        margin-top: 10px;
+      }
+
+      #send-button {
+        width: 60%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        margin-top: 10px;
+        background-color: #db3434;
+        color: white;
+        cursor: pointer;
+      }
+      #send-button:hover{
+        background-color: #be2020;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="header">Welcome to the F1 Community</div>
+    <div id="chat-container"></div>
+    <input type="text" id="message-input" placeholder="Type your message..." />
+    <button id="send-button" onclick="sendMessage()">Send</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+      const socket = io();
+      console.log(socket);
+
+      socket.on("message", (data) => {
+        displayMessage(data);
+      });
+
+      function sendMessage() {
+        const messageInput = document.getElementById("message-input");
+        const message = messageInput.value;
+
+        if (message.trim() !== "") {
+          socket.emit("message", { username: "<%= username %>", message });
+          messageInput.value = "";
+        }
+      }
+
+      function displayMessage(data) {
+        const chatContainer = document.getElementById("chat-container");
+        const messageDiv = document.createElement("div");
+        messageDiv.innerHTML = `<strong>${data.username}:</strong> ${data.message}`;
+        chatContainer.appendChild(messageDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+    </script>
+  </body>
+</html>
+

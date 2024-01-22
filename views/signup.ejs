@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-color: #000; /* Black background */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff; /* Text color */
+    }
+    
+    .picture-container {
+        width: 40%;
+        padding: 20px;
+        margin-left: 30px;
+        box-sizing: border-box;
+    }
+    
+    .signup-container {
+        width: 50%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    
+    .signup-form {
+        background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+        padding: 20px;
+        border-radius: 8px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
+    
+    input {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #fff;
+        border-radius: 4px;
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+        color: #000;
+    }
+    
+    button {
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+        background-color: #db3434; /* Change to your preferred color */
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: #be2020;
+    }
+    .radio-group {
+        display: flex;
+        gap: 10px;
+    }
+    </style>
+    </head>
+       
+<body>
+    <div class="picture-container">
+        <img src="logo1.jpg" alt="Your Image" style="width: 100%; height: auto; border-radius: 8px;">
+    </div>
+    <div class="signup-container">
+        <div class="signup-form">
+            <h2>Sign Up</h2>
+            <form action="/signup" method="post">
+             <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="gender" value="male" required> Male
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="female" required> Female
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="other" required> Other
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </div>
+    </form>
+    </div>
+
+</body>
+</html>
